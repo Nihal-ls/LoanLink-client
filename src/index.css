@@ -1,0 +1,11 @@
+
+html[data-theme="dark"] #root {
+  @apply bg-gradient-to-r from-[#0e0d0d] via-[#131212] to-[#242323];
+  min-height: 100vh;
+  /* optional: text color so content is visible */
+  @apply text-white;
+}
+
+
+@import "tailwindcss";
+@plugin "daisyui"
