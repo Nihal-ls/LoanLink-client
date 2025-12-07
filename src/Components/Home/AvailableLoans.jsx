@@ -2,12 +2,9 @@ import React from 'react';
 import { useLoaderData } from 'react-router';
 import LoanCard from '../Shared/LoanCard';
 
-
-
-
 const AvailableLoans = () => {
 const data = useLoaderData()
-console.log(data);
+
 
     return (
         <div className='max-w-7xl mx-auto '>

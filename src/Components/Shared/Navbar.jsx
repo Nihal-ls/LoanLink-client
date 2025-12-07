@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const Navbar = () => {
     const [theme, Settheme] = useState(localStorage.getItem("theme") || "light")
@@ -15,7 +15,7 @@ const Navbar = () => {
     }
     const navLinks = <>
       <NavLink to='/'>Home</NavLink>
-      <NavLink to='/'>Home</NavLink>
+      <NavLink to='/AllLoans'>All Loans</NavLink>
     </>
     return (
         <div className='bg-transparent sticky top-0 z-50  shadow-sm'>
@@ -42,12 +42,12 @@ const Navbar = () => {
                     <a className="text-xl font-bold">Loan-Link</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu  space-x-5 menu-horizontal px-1">
                       {navLinks}
                     </ul>
                 </div>
                 <div className="navbar-end gap-2">
-                    <a className="btn rounded-md border-none bg-orange-400 text-white ">Register</a>
+                    <Link to='/Register' className="btn rounded-md border-none bg-orange-400 text-white ">Register</Link>
                     <input
                         type="checkbox"
                         onChange={(e) => handeltheme(e.target.checked)}

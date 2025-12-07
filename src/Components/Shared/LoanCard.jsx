@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router';
 
 const LoanCard = ({ loan }) => {
-  const { loanTitle, loanImage, description, maxLimit,_id } = loan;
+  const { loanTitle, loanImage, interestRate,description, maxLimit,_id } = loan;
 
   return (
     <motion.div
@@ -54,6 +54,14 @@ const LoanCard = ({ loan }) => {
             className="font-semibold text-orange-400"
           >
             Max Limit: {maxLimit}$
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: .4 }}
+            className="font-semibold text-orange-400"
+          >
+        Interest Rate: {interestRate}
           </motion.p>
 
           <div className="card-actions justify-end mt-4">
