@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router';
 
 const Navbar = () => {
     const [theme, Settheme] = useState(localStorage.getItem("theme") || "light")
@@ -12,8 +13,12 @@ const Navbar = () => {
         Settheme(checked ? "dark" : "light")
 
     }
+    const navLinks = <>
+      <NavLink to='/'>Home</NavLink>
+      <NavLink to='/'>Home</NavLink>
+    </>
     return (
-        <div className='bg-transparent    shadow-sm'>
+        <div className='bg-transparent sticky top-0 z-50  shadow-sm'>
             <div className="navbar max-w-7xl mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -38,17 +43,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><a>Item 1</a></li>
-                        <li>
-                            <details>
-                                <summary>Parent</summary>
-                                <ul className="p-2 bg-base-100 w-40 z-1">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </details>
-                        </li>
-                        <li><a>Item 3</a></li>
+                      {navLinks}
                     </ul>
                 </div>
                 <div className="navbar-end gap-2">
