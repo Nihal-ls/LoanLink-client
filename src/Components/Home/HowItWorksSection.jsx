@@ -25,27 +25,23 @@ const HowItWorksSection = () => {
     }
   ];
 
-  // --- Framer Motion Variants ---
 
-  // Container variant to handle the staggered delay for the steps
   const container = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2, // Delay between each step's animation
-        delayChildren: 0.3,   // Initial delay before the steps start animating
+        staggerChildren: 0.2, 
+        delayChildren: 0.3,   
       }
     }
   };
 
-  // Item variant for individual step card animation
   const item = {
     hidden: { opacity: 0, y: 50 },
     show: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
 
-  // Header variant for simultaneous fade-in
   const headerVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: { 
@@ -55,20 +51,18 @@ const HowItWorksSection = () => {
     }
   };
 
-  // --- Component JSX ---
 
   return (
     <section id="how-it-works" className="py-16 bg-transparent sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Heading - Framer Motion Added */}
         <div className="text-center">
           <motion.h2 
             className="text-base text-orange-400 font-semibold tracking-wide uppercase"
             variants={headerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }} // Animation runs only once when visible
+            viewport={{ once: true }} 
           >
             Your Path to Funding
           </motion.h2>
@@ -78,7 +72,7 @@ const HowItWorksSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }} // Slight delay after h2
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }} 
           > 
             How It Works: Securing Your Loan in 3 Simple Steps
           </motion.p>
@@ -88,30 +82,28 @@ const HowItWorksSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }} // Slight delay after p
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }} 
           >
             Our platform connects you directly with the best lenders tailored to your financial needs. Getting started is fast, free, and secure.
           </motion.p>
         </div>
 
-        {/* Steps Grid - Framer Motion Added (Staggered Animation) */}
         <motion.div 
           className="mt-16"
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.3 }} // Animation starts when 30% of the grid is visible
+          viewport={{ once: true, amount: 0.3 }} 
         >
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
             {steps.map((step, index) => {
               const IconComponent = step.icon;
               return (
-                // Individual Step Card - Uses motion.div for animation and hover effect
                 <motion.div 
                   key={index} 
                   className="relative p-6 bg-transparent rounded-lg shadow-xl border border-gray-100"
                   variants={item}
-                  whileHover={{ scale: 1.05, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }} // Lift and scale on hover
+                  whileHover={{ scale: 1.05, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }} 
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div className="flex items-center justify-center h-12 w-12 rounded-full bg-orange-50 text-orange-400 shadow-md">
@@ -129,7 +121,6 @@ const HowItWorksSection = () => {
                     <p className="text-sm font-medium text-orange-600">{step.details}</p>
                   </div>
                   
-                  {/* Visual Step Connector (Arrow) */}
                   {index < steps.length - 1 && (
                     <div className="absolute hidden md:block top-1/2 right-[-1.5rem] w-8 h-1 bg-orange-300 transform -translate-y-1/2">
                       <svg className="absolute -right-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-orange-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
