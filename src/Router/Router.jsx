@@ -6,6 +6,8 @@ import Allloans from "../Pages/Allloans/Allloans";
 import Register from "../Pages/Authentication/Register";
 import Profile from "../Pages/Profile/Profile";
 import DashBoardLayout from "../Layouts/Dashboard/DashBoardLayout";
+import PrivateRoute from "./PrivateRouter";
+import Myloans from "../Pages/Dashboard/Myloans";
 
 const Router = createBrowserRouter([
     {
@@ -19,7 +21,9 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/details/:id',
-                element: <LoansDetails />
+                element: <PrivateRoute>
+                    <LoansDetails />
+                </PrivateRoute>
             },
             {
                 path: '/AllLoans',
@@ -30,16 +34,30 @@ const Router = createBrowserRouter([
                 path: '/Register',
                 element: <Register />
             },
-            {
-                path: '/profile',
-                element: <Profile />
-            }
+
         ],
-        
+
     },
     {
-        path:'/dashboard',
-        element: <DashBoardLayout/>
+        path: '/dashboard',
+        element: <PrivateRoute>
+            <DashBoardLayout />
+        </PrivateRoute>,
+        children: [
+            {
+
+                index: true,
+                element: <PrivateRoute>
+                    <Myloans />
+                </PrivateRoute>
+            },
+            {
+                path: '/dashboard/profile',
+                element: <PrivateRoute>
+                    <Profile />
+                </PrivateRoute>
+            },
+        ]
     }
 
 ])

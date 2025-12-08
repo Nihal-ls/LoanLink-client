@@ -74,9 +74,7 @@ const Navbar = () => {
                                 </div>
                                 <ul tabIndex="-1" className="dropdown-content space-y-2 menu bg-base-100 rounded-box z-1 w-70 text-xl p-2 shadow-sm">
                                     <li><Link to='/dashboard' className='flex items-center gap-2'><AiFillAppstore size={20}/> Dashboard</Link></li>
-                                    <li><Link to='/profile' className=''>
-                                        <img src={user?.photoURL} className='w-4 rounded-full' alt="" />
-                                        My Profile</Link></li>
+                                  
                                     <li className=''><div className="flex items-center gap-2">
                                         <input
                                             type="checkbox"
