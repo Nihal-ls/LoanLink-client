@@ -8,6 +8,7 @@ import Profile from "../Pages/Profile/Profile";
 import DashBoardLayout from "../Layouts/Dashboard/DashBoardLayout";
 import PrivateRoute from "./PrivateRouter";
 import Myloans from "../Pages/Dashboard/Myloans";
+import Login from "../Pages/Authentication/Login";
 
 const Router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const Router = createBrowserRouter([
             {
                 path: '/Register',
                 element: <Register />
+            },
+            {
+                path: '/login',
+                element: <Login/>
             },
 
         ],

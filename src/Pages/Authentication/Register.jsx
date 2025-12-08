@@ -1,7 +1,7 @@
 import React from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import useAuth from '../../Hooks/useAuth';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -83,7 +83,7 @@ const Register = () => {
                                 Login with Google
                             </button>
                             <p className='text-sm text-red-500'>{errors?.password?.message}</p>
-
+                   <span className='text-sm px-4'>Already Have An Account? <Link className='text-blue-800 underline' to='/login'>Login</Link></span>
                         </div>
                     </div>
                 </div>
