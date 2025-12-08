@@ -4,32 +4,34 @@ import useAuth from '../../Hooks/useAuth';
 import { Link, useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
+import { saveorUpdateUsers } from '../../Utils';
+import { em } from 'framer-motion/client';
 
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 const Register = () => {
     const { signInWithGoogle, setUser, createUser, updateUserProfile } = useAuth()
     const navigate = useNavigate()
-    const handlegoogleSignIn = () => {
-        signInWithGoogle()
-            .then(res => {
-                setUser(res.user)
-                navigate('/')
-            })
+    const handlegoogleSignIn = async () => {
+        const { user } = await signInWithGoogle()
+        await saveorUpdateUsers({ name: user.displayName, email: user.email, photoURL: user.photoURL })
+        setUser(user)
+        navigate('/')
     }
 
     const { register, handleSubmit, formState: { errors } } = useForm()
 
-    const handleformSubmit = (data) => {
-        createUser(data?.email, data?.password)
-            .then(res => {
-                updateUserProfile(
-                    data?.name,
-                    data?.photoURL
-                )
-                setUser(res.user)
-                navigate('/')
-                toast.success('Registration successful!')
-            })
+    const handleformSubmit = async (data) => {
+        console.log(data);
+        const { name, email, photoURL, role } = data
+
+        const result = await createUser(email, data?.password)
+        console.log(result);
+
+        await updateUserProfile(name, photoURL,)
+        setUser(result.user);
+        await saveorUpdateUsers({ name, email, photoURL, role })
+        navigate('/')
+
     }
 
 
@@ -83,7 +85,7 @@ const Register = () => {
                                 Login with Google
                             </button>
                             <p className='text-sm text-red-500'>{errors?.password?.message}</p>
-                   <span className='text-sm px-4'>Already Have An Account? <Link className='text-blue-800 underline' to='/login'>Login</Link></span>
+                            <span className='text-sm px-4'>Already Have An Account? <Link className='text-blue-800 underline' to='/login'>Login</Link></span>
                         </div>
                     </div>
                 </div>
