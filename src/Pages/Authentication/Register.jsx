@@ -13,7 +13,7 @@ const Register = () => {
     const navigate = useNavigate()
     const handlegoogleSignIn = async () => {
         const { user } = await signInWithGoogle()
-        await saveorUpdateUsers({ name: user.displayName, email: user.email, photoURL: user.photoURL })
+        await saveorUpdateUsers({ name: user.displayName, email: user.email, photoURL: user.photoURL,role:user?.role })
         setUser(user)
         navigate('/')
     }
@@ -58,7 +58,7 @@ const Register = () => {
                                 {/* Role */}
                                 <select
                                     {...register('role')}
-                                    defaultValue="Pick a color" className="select">
+                                    defaultValue="Pick a Role" className="select">
                                     <option disabled={true}>Pick a color</option>
                                     <option value='borrower'>borrower</option>
                                     <option value='Manager'>Manager</option>

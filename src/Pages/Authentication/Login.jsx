@@ -3,19 +3,19 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../Hooks/useAuth';
 import { Link, useNavigate } from 'react-router';
 import toast, { Toaster } from 'react-hot-toast';
+import { saveorUpdateUsers } from '../../Utils';
 
 const Login = () => {
     const { signInWithGoogle, setUser, signIn } = useAuth()
     const { register, handleSubmit, formState: { errors } } = useForm()
     const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
     const navigate = useNavigate()
-    const handlegoogleSignIn = () => {
-        signInWithGoogle()
-            .then(res => {
-                setUser(res.user)
-                navigate('/')
-            })
-    }
+    const handlegoogleSignIn = async () => {
+          const { user } = await signInWithGoogle()
+          await saveorUpdateUsers({ name: user.displayName, email: user.email, photoURL: user.photoURL,role:user?.role })
+          setUser(user)
+          navigate('/')
+      }
     const handleformSubmit = (data) => {
         signIn(data?.email, data?.password)
             .then(res => {
