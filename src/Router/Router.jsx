@@ -4,6 +4,8 @@ import Home from "../Pages/Home/Home";
 import LoansDetails from "../Pages/LoansDetails";
 import Allloans from "../Pages/Allloans/Allloans";
 import Register from "../Pages/Authentication/Register";
+import Profile from "../Pages/Profile/Profile";
+import DashBoardLayout from "../Layouts/Dashboard/DashBoardLayout";
 
 const Router = createBrowserRouter([
     {
@@ -26,9 +28,19 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/Register',
-                element: <Register/>
+                element: <Register />
             },
+            {
+                path: '/profile',
+                element: <Profile />
+            }
         ],
+        
     },
+    {
+        path:'/dashboard',
+        element: <DashBoardLayout/>
+    }
+
 ])
 export default Router
