@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 
 const LoansDetails = () => {
     const { id } = useParams()
@@ -17,7 +17,7 @@ const LoansDetails = () => {
     if (loading) {
         return <p>Loading</p>
     }
-    const {loanTitle, loanImage,maxLimit,availableEMIPlans,interestRate,description,category} = loan
+    const {loanTitle, _id,loanImage,maxLimit,availableEMIPlans,interestRate,description,category} = loan
     return (
         <div>
             <div className="card max-w-7xl mx-auto flex-wrap card-side bg-transparent shadow-sm">
@@ -38,7 +38,7 @@ const LoansDetails = () => {
                         {availableEMIPlans.map(plans => <li className='border-b-1 border-gray-200'>{plans}</li>)}
                     </ul>
                     <div className="card-actions justify-end">
-                    <a className="btn rounded-md border-none bg-orange-400 text-white ">Apply Now</a>
+                    <Link to={`/apply-loan/${_id}`} className="btn rounded-md border-none bg-orange-400 text-white ">Apply Now</Link>
                     </div>
                 </div>
             </div>

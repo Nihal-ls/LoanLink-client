@@ -9,6 +9,7 @@ import DashBoardLayout from "../Layouts/Dashboard/DashBoardLayout";
 import PrivateRoute from "./PrivateRouter";
 import Myloans from "../Pages/Dashboard/Myloans";
 import Login from "../Pages/Authentication/Login";
+import ApplyLoan from "../Pages/ApplyLoan/ApplyLoan";
 
 const Router = createBrowserRouter([
     {
@@ -24,6 +25,12 @@ const Router = createBrowserRouter([
                 path: '/details/:id',
                 element: <PrivateRoute>
                     <LoansDetails />
+                </PrivateRoute>
+            },
+            {
+                path: '/apply-loan/:id',
+                element: <PrivateRoute>
+                    <ApplyLoan />
                 </PrivateRoute>
             },
             {
