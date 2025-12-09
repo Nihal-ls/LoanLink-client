@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import { useParams } from 'react-router';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 const ApplyLoan = () => {
+
 
     const { user } = useAuth()
 
@@ -17,12 +20,19 @@ const ApplyLoan = () => {
                 setLoading(false)
             })
     }, [id])
-    console.log(loan);
+
+    const { register, handleSubmit, formState: { errors } } = useForm()
+
+
     if (loading) {
         return <p>Loading</p>
     }
+    const { loanTitle, interestRate } = loan || []
+    const handleformSubmit = async (data) => {
+        console.log(data);
+        await axios.post(`${import.meta.env.VITE_DOMAIN}/loan-application`,data)
 
-    const { loanTitle, _id, loanImage, maxLimit, availableEMIPlans, interestRate, description, category } = loan || []
+    }
 
 
     return (
@@ -34,49 +44,49 @@ const ApplyLoan = () => {
                     </div>
                     <div className="card bg-transparent w-full max-w-sm shrink-0 shadow-2xl">
                         <div className="card-body">
-                            <form className="fieldset">
+                            <form onSubmit={handleSubmit(handleformSubmit)} className="fieldset">
                                 {/* email */}
                                 <label className="label">Email</label>
-                                <input type="email" defaultValue={user?.email} className="input" placeholder="Email" />
+                                <input {...register('email')} type="email" defaultValue={user?.email} className="input" placeholder="Email" />
                                 {/* loan name */}
                                 <label className="label">Loan Name</label>
-                                <input type="text" defaultValue={loanTitle} className="input" placeholder="Loan Name" />
+                                <input {...register('loanTitle')} type="text" defaultValue={loanTitle} className="input" placeholder="Loan Name" />
                                 {/* interest rate */}
                                 <label className="label">Loan interest Rate</label>
-                                <input type="text" className="input" placeholder="interest rate" />
+                                <input type="number" {...register("interestRate")} className="input" defaultValue={interestRate} placeholder="interest rate" />
                                 {/* First name */}
                                 <label className="label">First Name</label>
-                                <input type="text" className="input" placeholder="First Name" />
+                                <input type="text" {...register('firstName')} className="input" placeholder="First Name" />
                                 {/* last name */}
                                 <label className="label">Last Name</label>
-                                <input type="text" className="input" placeholder="Last Name" />
+                                <input type="text" {...register('lastName')} className="input" placeholder="Last Name" />
                                 {/* contact numeber */}
                                 <label className="label">Contact</label>
-                                <input type="number" className="input" placeholder="Your Mobile Number" />
+                                <input type="number" {...register('contactNumber')} className="input" placeholder="Your Mobile Number" />
                                 {/* National ID / Passport Number */}
                                 <label className="label">National ID / Passport Number</label>
-                                <input type="number" className="input" placeholder="National ID / Passport Number" />
+                                <input type="number" {...register('documentNumber')} className="input" placeholder="National ID / Passport Number" />
                                 {/* Income Source */}
                                 <label className="label">Income Source</label>
-                                <input type="text" className="input" placeholder="Income Source" />
+                                <input type="text" {...register('incomeSource')} className="input" placeholder="Income Source" />
                                 {/*Motnhly income */}
                                 <label className="label">Monthly Income</label>
-                                <input type="text" className="input" placeholder="Monthly Income" />
+                                <input type="number" {...register('monthlyiNCOME')} className="input" placeholder="Monthly Income" />
 
                                 {/*Loan Ammount */}
                                 <label className="label">Loan Amount</label>
-                                <input type="text" className="input" placeholder="Loan Amount" />
+                                <input type="number" {...register("loanAmount")} className="input" placeholder="Loan Amount" />
                                 {/*Reason for Loan */}
                                 <label className="label">Reason for loan</label>
-                                <textarea className='input' placeholder='reason' rows={50} cols={50}></textarea>
+                                <textarea className='input' {...register('reason')} placeholder='reason' rows={50} cols={50}></textarea>
                                 {/*address */}
                                 <label className="label">Address</label>
-                                <input className='input' type="text" placeholder='Address' />
+                                <input className='input' {...register('address')} type="text" placeholder='Address' />
                                 {/*Reason for Loan */}
                                 <label className="label">Extra Notes</label>
-                                <textarea className='input' placeholder='Extra Notes' rows={50} cols={50}></textarea>
-                        
-                                <button className="btn btn-neutral mt-4">Apply</button>
+                                <textarea className='input' {...register('extraNotes')} placeholder='Extra Notes' rows={50} cols={50}></textarea>
+                                {/* */}
+                                <button type='Submit' className="btn btn-neutral mt-4">Apply</button>
                             </form>
                         </div>
                     </div>
