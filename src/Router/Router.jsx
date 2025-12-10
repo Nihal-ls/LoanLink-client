@@ -10,6 +10,9 @@ import PrivateRoute from "./PrivateRouter";
 import Myloans from "../Pages/Dashboard/Myloans";
 import Login from "../Pages/Authentication/Login";
 import ApplyLoan from "../Pages/ApplyLoan/ApplyLoan";
+import ManageUsers from "../Pages/Dashboard/ManageUsers";
+import Alloan from "../Pages/Dashboard/Alloan";
+import LoanApplications from "../Pages/Dashboard/LoanApplications";
 
 const Router = createBrowserRouter([
     {
@@ -44,7 +47,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/login',
-                element: <Login/>
+                element: <Login />
             },
 
         ],
@@ -67,6 +70,30 @@ const Router = createBrowserRouter([
                 path: '/dashboard/profile',
                 element: <PrivateRoute>
                     <Profile />
+                </PrivateRoute>
+            },
+            {
+                path: '/dashboard/manage-users',
+                element: <PrivateRoute>
+                    <ManageUsers />
+                </PrivateRoute>
+            },
+            {
+                path: '/dashboard/manage-users',
+                element: <PrivateRoute>
+                    <ManageUsers />
+                </PrivateRoute>
+            },
+            {
+                path: '/dashboard/All-loan',
+                element: <PrivateRoute>
+                    <Alloan />
+                </PrivateRoute>
+            },
+            {
+                path: '/dashboard/Loan-application',
+                element: <PrivateRoute>
+                       <LoanApplications/>                     
                 </PrivateRoute>
             },
         ]

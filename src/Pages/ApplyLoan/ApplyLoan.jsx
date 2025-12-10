@@ -86,7 +86,7 @@ const ApplyLoan = () => {
                                 <label className="label">Extra Notes</label>
                                 <textarea className='input' {...register('extraNotes')} placeholder='Extra Notes' rows={50} cols={50}></textarea>
                                 {/* */}
-                                <button type='Submit' className="btn btn-neutral mt-4">Apply</button>
+                                <button type='Submit' className="btn bg-orange-500 mt-4">Apply</button>
                             </form>
                         </div>
                     </div>

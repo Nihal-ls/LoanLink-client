@@ -1,4 +1,6 @@
-
+.active{
+  @apply border-1 border-orange-500 p-2 rounded-lg text-orange-600
+}
 html[data-theme="dark"] #root {
   @apply bg-gradient-to-r from-[#0e0d0d] via-[#131212] to-[#242323];
   min-height: 100vh;

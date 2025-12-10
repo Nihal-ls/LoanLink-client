@@ -7,8 +7,9 @@ const useRole = () => {
     const [role,setRole] = useState([])
     fetch(`${import.meta.env.VITE_DOMAIN}/users/role/${user?.email}`)
         .then(res => res.json())
-        .then(data => setRole(data))
-    return role
+        .then(data =>{ setRole(data)
+        })
+    return role 
 };
 
 export default useRole;
