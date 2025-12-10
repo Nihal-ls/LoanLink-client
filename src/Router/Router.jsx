@@ -78,12 +78,7 @@ const Router = createBrowserRouter([
                     <ManageUsers />
                 </PrivateRoute>
             },
-            {
-                path: '/dashboard/manage-users',
-                element: <PrivateRoute>
-                    <ManageUsers />
-                </PrivateRoute>
-            },
+         
             {
                 path: '/dashboard/All-loan',
                 element: <PrivateRoute>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
@@ -23,7 +23,7 @@ const ApplyLoan = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm()
 
-
+ const navigate= useNavigate()
     if (loading) {
         return <p>Loading</p>
     }
@@ -31,7 +31,7 @@ const ApplyLoan = () => {
     const handleformSubmit = async (data) => {
         console.log(data);
         await axios.post(`${import.meta.env.VITE_DOMAIN}/loan-application`,data)
-
+         navigate('/dashboard')
     }
 
 

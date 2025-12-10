@@ -79,9 +79,9 @@ const Myloans = () => {
                                     <td>{l._id}</td>
                                     <td>{l?.status}</td>
                                     <td className='flex gap-2'>
-                                        <button className='btn bg-orange-100 text-orange-500' >View</button>
-                                        <button onClick={handleDelete} className='text-red-500 bg-red-100 btn'>Delete</button>
-                                        <button className='bg-green-100 text-green-500 btn'>Pay</button>
+                                        <button className='btn bg-orange-100 text-orange-500 hover:bg-orange-500 hover:text-white' >View</button>
+                                        <button onClick={handleDelete} className='text-red-500 hover:text-white hover:bg-red-500 bg-red-100 btn'>Delete</button>
+                                        <button className='bg-green-100 text-green-500 hover:bg-green-500 hover:text-white btn'>Pay</button>
                                     </td>
                                 </tr>
                             )
