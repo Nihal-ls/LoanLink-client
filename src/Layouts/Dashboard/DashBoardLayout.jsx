@@ -5,6 +5,7 @@ import useAuth from '../../Hooks/useAuth';
 import { AiFillShopping } from 'react-icons/ai';
 import { FaUserClock, FaUsers } from 'react-icons/fa6';
 import { FaShoppingBag } from 'react-icons/fa';
+import useRole from '../../Hooks/useRole';
 
 const DashBoardLayout = () => {
     const [theme, Settheme] = useState(localStorage.getItem("theme") || "light")
@@ -19,6 +20,9 @@ const DashBoardLayout = () => {
         Settheme(checked ? "dark" : "light")
 
     }
+
+    const { role } = useRole()
+
     return (
         <div>
             <div className="drawer lg:drawer-open">
@@ -71,64 +75,52 @@ const DashBoardLayout = () => {
                                 <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My loans">
                                     {/* Home icon */}
                                     <Link to='/dashboard' className='items-center flex gap-1' >
-                                        <AiFillShopping  size={24}/>
+                                        <AiFillShopping size={24} />
                                         <span className="is-drawer-close:hidden">My Loans</span>
                                     </Link>
                                 </button>
                             </li>
 
 
-                            {/* manage users-admin */}
-                            <li>
-                                <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Users">
+                            {role === 'Admin' &&
+                                < li >
+                                    <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Users">
 
-                                    <NavLink to='/dashboard/Manage-users' className='items-center flex gap-1' >
-                                        <FaUsers size={24}/>
-                                        <span className="is-drawer-close:hidden">Manage Users</span>
-                                    </NavLink>
-                                </button>
-                            </li>
+                                        <NavLink to='/dashboard/Manage-users' className='items-center flex gap-1' >
+                                            <FaUsers size={24} />
+                                            <span className="is-drawer-close:hidden">Manage Users</span>
+                                        </NavLink>
+                                    </button>
+                                </li>}
 
-                            {/* All loans-admin */}
-                            <li>
-                                <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="All Loans">
+                            {role === 'Admin' &&
+                                < li >
+                                    <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="All Loans">
 
-                                    <NavLink to='/dashboard/All-loan' className='items-center flex gap-1' >
-                                        <FaShoppingBag size={24} />
-                                        <span className="is-drawer-close:hidden">All Loans</span>
-                                    </NavLink>
-                                </button>
-                            </li>
-                            {/* All loans-admin */}
-                            <li>
-                                <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Loan Application">
+                                        <NavLink to='/dashboard/All-loan' className='items-center flex gap-1' >
+                                            <FaShoppingBag size={24} />
+                                            <span className="is-drawer-close:hidden">All Loans</span>
+                                        </NavLink>
+                                    </button>
+                                </li>}
 
-                                    <NavLink to='/dashboard/Loan-application' className='items-center flex gap-1' >
-                                        <FaUserClock size={24} />
+                          
 
-                                        <span className="is-drawer-close:hidden">Loan Applications</span>
-                                    </NavLink>
-                                </button>
-                            </li>
-
-
-
-
-                            {/* List item */}
-                            <li>
-                                <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings">
-                                    {/* Settings icon */}
-                                    <NavLink to='/dashboard/profile' className='flex items-center gap-2'>
-                                        <img src={user && user?.photoURL} className='w-6 rounded-full' alt="" />
-                                        <span className="is-drawer-close:hidden">My Profile</span>
-                                    </NavLink>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
+                        {/* List item */}
+                        <li>
+                            <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings">
+                                {/* Settings icon */}
+                                <NavLink to='/dashboard/profile' className='flex items-center gap-2'>
+                                    <img src={user && user?.photoURL} className='w-6 rounded-full' alt="" />
+                                    <span className="is-drawer-close:hidden">My Profile</span>
+                                </NavLink>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
+        </div >
     );
 };
 

@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 import { saveorUpdateUsers } from '../../Utils';
-import { em } from 'framer-motion/client';
 
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 const Register = () => {
@@ -13,7 +12,7 @@ const Register = () => {
     const navigate = useNavigate()
     const handlegoogleSignIn = async () => {
         const { user } = await signInWithGoogle()
-        await saveorUpdateUsers({ name: user.displayName, email: user.email, photoURL: user.photoURL,role:user?.role })
+        await saveorUpdateUsers({ name: user.displayName, email: user.email, photoURL: user.photoURL, role: user?.role })
         setUser(user)
         navigate('/')
     }
@@ -23,13 +22,14 @@ const Register = () => {
     const handleformSubmit = async (data) => {
         console.log(data);
         const { name, email, photoURL, role } = data
-
+        const savingEmail = email.toLowerCase(); 
+        console.log(savingEmail);
         const result = await createUser(email, data?.password)
         console.log(result);
 
         await updateUserProfile(name, photoURL,)
         setUser(result.user);
-        await saveorUpdateUsers({ name, email, photoURL, role })
+        await saveorUpdateUsers({ name, email: savingEmail, photoURL, role })
         navigate('/')
 
     }

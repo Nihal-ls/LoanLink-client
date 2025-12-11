@@ -78,17 +78,19 @@ const Router = createBrowserRouter([
                     <ManageUsers />
                 </PrivateRoute>
             },
-         
+
             {
                 path: '/dashboard/All-loan',
                 element: <PrivateRoute>
                     <Alloan />
-                </PrivateRoute>
+                </PrivateRoute>,
+                loader: () => fetch(`${import.meta.env.VITE_DOMAIN}/Allloans`),
+
             },
             {
                 path: '/dashboard/Loan-application',
                 element: <PrivateRoute>
-                       <LoanApplications/>                     
+                    <LoanApplications />
                 </PrivateRoute>
             },
         ]
