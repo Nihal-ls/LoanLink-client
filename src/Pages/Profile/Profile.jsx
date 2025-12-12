@@ -5,7 +5,6 @@ import useRole from '../../Hooks/useRole';
 const Profile = () => {
     const { user } = useAuth()
        const {role}  = useRole()
-       console.log(role);
     return ( 
         <div className='max-w-7xl mx-auto'>
             <div className="card py-10 max-w-160  mx-auto shadow-2xl hover:scale-120 transition ease-in-out">

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
+import LoaidngSpinenr from '../Components/Shared/LoaidngSpinenr';
 
 const LoansDetails = () => {
     const { id } = useParams()
@@ -15,7 +16,7 @@ const LoansDetails = () => {
     }, [id])
     console.log(loan);
     if (loading) {
-        return <p>Loading</p>
+        return <LoaidngSpinenr/>
     }
     const {loanTitle, _id,loanImage,maxLimit,availableEMIPlans,interestRate,description,category} = loan
     return (

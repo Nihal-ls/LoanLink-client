@@ -2,11 +2,12 @@ import React from 'react';
 import { useLoaderData } from 'react-router';
 import LoanCard from '../../Components/Shared/LoanCard';
 import HomeBanner from '../../Components/Banners/HomeBanner.';
+import LoaidngSpinenr from '../../Components/Shared/LoaidngSpinenr';
 
 const Allloans = () => {
     const data = useLoaderData()
     if (!data) {
-        return <div>Loading</div>
+        return <LoaidngSpinenr/>
     }
     return (
         <div className="">

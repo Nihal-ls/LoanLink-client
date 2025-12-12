@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import UserTable from '../../Components/Dashboard/UserTable';
+import LoaidngSpinenr from '../../Components/Shared/LoaidngSpinenr';
 
 const AdminUsers = () => {
     const [users, setusers] = useState([])
@@ -14,7 +15,7 @@ const AdminUsers = () => {
                 setLoading(false)
             })
     }, [])
-    if (loading) return <div>loading...</div>
+    if (loading) return <LoaidngSpinenr/>
     console.log(users);
 
 

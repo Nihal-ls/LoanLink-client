@@ -3,7 +3,7 @@ import { IoMoon } from 'react-icons/io5';
 import { Link, NavLink, Outlet } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 import { AiFillShopping } from 'react-icons/ai';
-import { FaUserClock, FaUsers } from 'react-icons/fa6';
+import { FaClock, FaUserClock, FaUsers } from 'react-icons/fa6';
 import { FaShoppingBag } from 'react-icons/fa';
 import useRole from '../../Hooks/useRole';
 
@@ -104,22 +104,33 @@ const DashBoardLayout = () => {
                                     </button>
                                 </li>}
 
-                          
+                            {role === 'Admin' &&
+                                < li >
+                                    <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Applications">
 
-                        {/* List item */}
-                        <li>
-                            <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings">
-                                {/* Settings icon */}
-                                <NavLink to='/dashboard/profile' className='flex items-center gap-2'>
-                                    <img src={user && user?.photoURL} className='w-6 rounded-full' alt="" />
-                                    <span className="is-drawer-close:hidden">My Profile</span>
-                                </NavLink>
-                            </button>
-                        </li>
-                    </ul>
+                                        <NavLink to='/dashboard/Loan-application' className='items-center flex gap-1' >
+                                            <FaClock size={24} />
+                                            <span className="is-drawer-close:hidden">Applications</span>
+                                        </NavLink>
+                                    </button>
+                                </li>}
+
+
+
+                            {/* List item */}
+                            <li>
+                                <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Profile">
+                                    {/* Settings icon */}
+                                    <NavLink to='/dashboard/profile' className='flex items-center gap-2'>
+                                        <img src={user && user?.photoURL} className='w-6 rounded-full' alt="" />
+                                        <span className="is-drawer-close:hidden">My Profile</span>
+                                    </NavLink>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
         </div >
     );
 };

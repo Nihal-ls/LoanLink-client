@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import ApplicationTableModal from '../../Components/Dashboard/Modals/ApplicationTableModal';
 
 const Myloans = () => {
     const { user } = useAuth()
@@ -79,8 +80,10 @@ const Myloans = () => {
                                     <td>{l._id}</td>
                                     <td>{l?.status}</td>
                                     <td className='flex gap-2'>
-                                        <button className='btn bg-orange-100 text-orange-500 hover:bg-orange-500 hover:text-white' >View</button>
+                                        <button onClick={() => document.getElementById(`my_modal_${l._id}`).showModal()} className='btn bg-orange-100 text-orange-500 hover:bg-orange-500 hover:text-white' >View</button>
+                                        <ApplicationTableModal loan={l} />
                                         <button onClick={handleDelete} className='text-red-500 hover:text-white hover:bg-red-500 bg-red-100 btn'>Delete</button>
+
                                         <button className='bg-green-100 text-green-500 hover:bg-green-500 hover:text-white btn'>Pay</button>
                                     </td>
                                 </tr>

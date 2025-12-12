@@ -31,16 +31,16 @@ const Alloan = () => {
                             data.map((loan, index) =>
                                 <tr>
                                     <th>{index + 1}</th>
-                                    <th><img src={loan.loanImage} alt="" /></th>
+                                    <th><img className='sm:w-100 md:w-110 lg:w-120 md:h-60' src={loan.loanImage} alt="" /></th>
                                     <td>{loan.loanTitle}</td>
                                     <td>{loan.interestRate}</td>
                                     <td>{loan.category}</td>
                                     <td>{loan?.created_by}</td>
                                     <td>  <label className="label">
-                                        <input type="checkbox" defaultChecked className="checkbox" />
-                                        Remember me
+                                        <input type="checkbox"  className="checkbox" />
+                                        Show On Home
                                     </label></td>
-                                    <td className='flex gap-2'>
+                                    <td className=''>
                                         <button className='btn bg-orange-100 text-orange-500 hover:bg-orange-500 hover:text-white' >Update</button>
                                     </td>
                                 </tr>

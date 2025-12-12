@@ -13,11 +13,13 @@ import ApplyLoan from "../Pages/ApplyLoan/ApplyLoan";
 import ManageUsers from "../Pages/Dashboard/ManageUsers";
 import Alloan from "../Pages/Dashboard/Alloan";
 import LoanApplications from "../Pages/Dashboard/LoanApplications";
+import LoaidngSpinenr from "../Components/Shared/LoaidngSpinenr";
 
 const Router = createBrowserRouter([
     {
         path: "/",
         element: <HomeLayout />,
+        hydrateFallbackElement: <LoaidngSpinenr/>,
         children: [
             {
                 index: true,
@@ -58,6 +60,7 @@ const Router = createBrowserRouter([
         element: <PrivateRoute>
             <DashBoardLayout />
         </PrivateRoute>,
+        hydrateFallbackElement: <LoaidngSpinenr/>,
         children: [
             {
 

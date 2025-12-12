@@ -4,8 +4,7 @@ import useAuth from './useAuth';
 
 const useRole = () => {
     const { user } = useAuth();
-    console.log(user);
-    console.log(user.email);
+
     
     const [role, setRole] = useState([])
     const [loading, setLoading] = useState(true)
@@ -17,7 +16,6 @@ const useRole = () => {
                 setLoading(false)
             })
     }, [user])
-    console.log(role);
 
     return role
 };
