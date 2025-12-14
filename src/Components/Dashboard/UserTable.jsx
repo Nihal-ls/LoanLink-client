@@ -15,7 +15,7 @@ const UserTable = ({ user, index }) => {
          }
     }
     return (
-            <tbody>
+            
                 <tr>
                     <th>{index + 1}</th>
                     <td>{user.name}</td>
@@ -31,10 +31,9 @@ const UserTable = ({ user, index }) => {
                         </form>
                     </td>
                     <td className='flex gap-2'>
-                        <button className='btn bg-orange-100 text-orange-500 hover:bg-orange-500 hover:text-white' >Update</button>
+                        <button type='button' className='btn bg-orange-100 text-orange-500 hover:bg-orange-500 hover:text-white' >Update</button>
                     </td>
                 </tr>
-            </tbody>
     );
 };
 

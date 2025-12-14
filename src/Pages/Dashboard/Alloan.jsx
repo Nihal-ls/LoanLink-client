@@ -1,13 +1,21 @@
 import React from 'react';
 import { useLoaderData } from 'react-router';
+import Swal from 'sweetalert2';
+import LoaidngSpinenr from '../../Components/Shared/LoaidngSpinenr';
+import axios from 'axios';
+import AllloanTable from '../../Components/Dashboard/AllloanTable';
 
 const Alloan = () => {
 
     const data = useLoaderData()
     if (!data) {
-        return <div>Loading</div>
+        return <LoaidngSpinenr/>
     }
     console.log(data);
+
+   
+
+
     return (
         <div>
             <div className="overflow-x-auto rounded-box border border-base-content/5 bg-transparent">
@@ -29,21 +37,7 @@ const Alloan = () => {
                         {/* row 1 */}
                         {
                             data.map((loan, index) =>
-                                <tr>
-                                    <th>{index + 1}</th>
-                                    <th><img className='sm:w-100 md:w-110 lg:w-120 md:h-60' src={loan.loanImage} alt="" /></th>
-                                    <td>{loan.loanTitle}</td>
-                                    <td>{loan.interestRate}</td>
-                                    <td>{loan.category}</td>
-                                    <td>{loan?.created_by}</td>
-                                    <td>  <label className="label">
-                                        <input type="checkbox"  className="checkbox" />
-                                        Show On Home
-                                    </label></td>
-                                    <td className=''>
-                                        <button className='btn bg-orange-100 text-orange-500 hover:bg-orange-500 hover:text-white' >Update</button>
-                                    </td>
-                                </tr>
+                               <AllloanTable loan={loan} index={index}/>
                             )
                         }
                     </tbody>
