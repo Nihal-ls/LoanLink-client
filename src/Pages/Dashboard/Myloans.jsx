@@ -3,6 +3,8 @@ import useAuth from '../../Hooks/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import ApplicationTableModal from '../../Components/Dashboard/Modals/ApplicationTableModal';
+import MyloansTable from '../../Components/Dashboard/MyloansTable';
+import LoaidngSpinenr from '../../Components/Shared/LoaidngSpinenr';
 
 const Myloans = () => {
     const { user } = useAuth()
@@ -16,45 +18,10 @@ const Myloans = () => {
                 setLoading(false)
             })
     }, [user])
-    if (loading) return <div>loading...</div>
+    if (loading) return <LoaidngSpinenr/>
     console.log(loan);
 
-    const handleDelete = () => {
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: "btn btn-success",
-                cancelButton: "btn btn-danger"
-            },
-            buttonsStyling: false
-        });
-        swalWithBootstrapButtons.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel!",
-            reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                });
-            } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                swalWithBootstrapButtons.fire({
-                    title: "Cancelled",
-                    text: "Your imaginary file is safe :)",
-                    icon: "error"
-                });
-            }
-        });
-    }
-
+ 
 
     return (
         <div>
@@ -74,19 +41,7 @@ const Myloans = () => {
                         {/* row 1 */}
                         {
                             loan.map((l, index) =>
-                                <tr>
-                                    <th>{index + 1}</th>
-                                    <td>{l.loanTitle}</td>
-                                    <td>{l._id}</td>
-                                    <td>{l?.status}</td>
-                                    <td className='flex gap-2'>
-                                        <button onClick={() => document.getElementById(`my_modal_${l._id}`).showModal()} className='btn bg-orange-100 text-orange-500 hover:bg-orange-500 hover:text-white' >View</button>
-                                        <ApplicationTableModal loan={l} />
-                                        <button onClick={handleDelete} className='text-red-500 hover:text-white hover:bg-red-500 bg-red-100 btn'>Delete</button>
-
-                                        <button className='bg-green-100 text-green-500 hover:bg-green-500 hover:text-white btn'>Pay</button>
-                                    </td>
-                                </tr>
+                               <MyloansTable l={l} loans={loan} setLoan={setLoan} index={index}/>
                             )
                         }
                     </tbody>
