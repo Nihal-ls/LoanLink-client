@@ -4,7 +4,7 @@ import { Link, NavLink, Outlet } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 import { AiFillShopping } from 'react-icons/ai';
 import { FaClock, FaUserClock, FaUsers } from 'react-icons/fa6';
-import { FaShoppingBag } from 'react-icons/fa';
+import { FaMoneyCheckAlt, FaShoppingBag } from 'react-icons/fa';
 import useRole from '../../Hooks/useRole';
 
 const DashBoardLayout = () => {
@@ -121,6 +121,17 @@ const DashBoardLayout = () => {
                                         <NavLink to='/dashboard/Add-loans' className='items-center flex gap-1' >
                                             <IoBagAdd size={24} />
                                             <span className="is-drawer-close:hidden">Add Loans</span>
+                                        </NavLink>
+                                    </button>
+                                </li>}
+                                {/* manage loans */}
+                            {role === 'Manager' &&
+                                < li >
+                                    <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manager Loans">
+
+                                        <NavLink to='/dashboard/manager-loans' className='items-center flex gap-1' >
+                                            <FaMoneyCheckAlt size={24} />
+                                            <span className="is-drawer-close:hidden">Manager Loans</span>
                                         </NavLink>
                                     </button>
                                 </li>}

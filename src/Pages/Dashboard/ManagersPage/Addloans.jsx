@@ -2,15 +2,21 @@ import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
+import useAuth from '../../../Hooks/useAuth';
+import useRole from '../../../Hooks/useRole';
 
 const Addloans = () => {
     const { register, handleSubmit } = useForm()
-
-
+    const { user } = useAuth()
+    const role = useRole()
     const handleformSubmit = async (data) => {
-        console.log(data);
+        const payload = {
+            ...data,
+            created_by: user.email,
+        };
+        console.log(payload);
         await axios.post(`${import.meta.env.VITE_DOMAIN}/add-loans`,
-            data
+            payload
         )
         Swal.fire({
             title: "loan Added Successfully",
@@ -18,8 +24,12 @@ const Addloans = () => {
         });
     }
 
+    if (!role === 'Manager') {
+        return
+    }
 
     return (
+
         <div>
             <div className="hero bg-transparent min-h-screen">
                 <div className="hero-content flex-col lg:flex-row-reverse">
@@ -92,11 +102,21 @@ const Addloans = () => {
                                             {...register("availableEMIPlans")}
                                         /> 24 Months
                                     </label>
+
                                 </div>
 
                                 {/* image */}
                                 <label className="label">Loan Image</label>
                                 <input type="url" {...register("loanImage")} className="input" placeholder="loan Image" />
+
+                                <label className="cursor-pointer flex items-center gap-2 text-lg">
+                                    <input
+                                        className='size-4'
+                                        type="checkbox"
+                                        value="24 months"
+                                    /> Show on Home
+                                </label>
+
 
                                 <button type='Submit' className="btn bg-orange-500 mt-4">Apply</button>
                             </form>
