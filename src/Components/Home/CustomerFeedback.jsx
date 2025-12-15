@@ -2,11 +2,9 @@ import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // Required base styles
 
-// Importing an icon for the quote marks and stars
 import { FaQuoteLeft, FaStar } from 'react-icons/fa6';
 
 const CustomerFeedbackCarousel = () => {
-  // Static data for the carousel slides
   const feedbackData = [
     {
       id: 1,
@@ -31,7 +29,6 @@ const CustomerFeedbackCarousel = () => {
     },
   ];
   
-  // Helper function to render star ratings
   const renderStars = (rating) => {
     const totalStars = 5;
     return Array.from({ length: totalStars }, (_, index) => (
@@ -55,15 +52,14 @@ const CustomerFeedbackCarousel = () => {
           </p>
         </div>
 
-        {/* --- Carousel Integration --- */}
+
         <Carousel
-          showArrows={true} // Show next/prev arrows
-          showStatus={false} // Hide the "1 of 3" status text
-          showIndicators={true} // Show the navigation dots
-          infiniteLoop={true} // Loop back to the first slide
-          autoPlay={true} // Auto-slide feature
-          interval={2000} // Slide every 5 seconds
-          // Customize the navigation dots styling using a render prop
+          showArrows={true} 
+          showStatus={false} 
+          showIndicators={true} 
+          infiniteLoop={true} 
+          autoPlay={true} 
+          interval={2000} 
           renderIndicator={(onClickHandler, isSelected, index, label) => {
             return (
               <li
@@ -80,27 +76,22 @@ const CustomerFeedbackCarousel = () => {
           }}
         >
           {feedbackData.map((feedback) => (
-            // Each child of the Carousel component becomes a slide
             <div 
               key={feedback.id} 
               className="p-8 md:p-12 border border-gray-200 rounded-lg shadow-xl bg-transparent text-left"
             >
               <div className="flex justify-start">
-                {/* Quote Icon */}
                 <FaQuoteLeft className="h-8 w-8 text-orange-400 opacity-70 mb-4" />
               </div>
 
-              {/* Quote Text */}
               <p className="text-xl italic  leading-relaxed mb-6">
                 "{feedback.quote}"
               </p>
 
-              {/* Rating */}
               <div className="flex items-center space-x-1 mb-4">
                 {renderStars(feedback.rating)}
               </div>
 
-              {/* Customer Info */}
               <div className="mt-4">
                 <p className="text-lg font-bold ">{feedback.name}</p>
                 <p className="text-sm text-orange-400 font-medium">{feedback.location}</p>

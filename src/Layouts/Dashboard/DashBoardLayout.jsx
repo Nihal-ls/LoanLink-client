@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IoMoon } from 'react-icons/io5';
+import { IoBagAdd, IoMoon } from 'react-icons/io5';
 import { Link, NavLink, Outlet } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 import { AiFillShopping } from 'react-icons/ai';
@@ -111,6 +111,16 @@ const DashBoardLayout = () => {
                                         <NavLink to='/dashboard/Loan-application' className='items-center flex gap-1' >
                                             <FaClock size={24} />
                                             <span className="is-drawer-close:hidden">Applications</span>
+                                        </NavLink>
+                                    </button>
+                                </li>}
+                            {role === 'Manager' &&
+                                < li >
+                                    <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Add Loans">
+
+                                        <NavLink to='/dashboard/Add-loans' className='items-center flex gap-1' >
+                                            <IoBagAdd size={24} />
+                                            <span className="is-drawer-close:hidden">Add Loans</span>
                                         </NavLink>
                                     </button>
                                 </li>}
