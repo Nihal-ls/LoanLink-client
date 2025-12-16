@@ -49,7 +49,7 @@ const ManagerLoansTable = ({ loan, index, setloans, loans }) => {
 
     return (
         <tr>
-
+      
             <th>{index + 1}</th>
             <td><img
                 className='w-50 h-30 rounded-lg'
@@ -64,7 +64,7 @@ const ManagerLoansTable = ({ loan, index, setloans, loans }) => {
                     onClick={() => document.getElementById('my_modal_3').showModal()}
                     className='bg-green-100 text-green-500 hover:bg-green-500 hover:text-white btn'>Update</button>
 
-                 <UUpdateLoans/>
+                 <UUpdateLoans loan={loan}/>
 
 
             </td>

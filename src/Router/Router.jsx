@@ -16,6 +16,7 @@ import LoanApplications from "../Pages/Dashboard/LoanApplications";
 import LoaidngSpinenr from "../Components/Shared/LoaidngSpinenr";
 import Addloans from "../Pages/Dashboard/ManagersPage/Addloans";
 import ManageLoans from "../Pages/Dashboard/ManagersPage/ManageLoans";
+import PendingLoans from "../Pages/Dashboard/ManagersPage/PendingLoans";
 
 const Router = createBrowserRouter([
     {
@@ -108,6 +109,12 @@ const Router = createBrowserRouter([
                 path: '/dashboard/manager-loans',
                 element: <PrivateRoute>
                     <ManageLoans />
+                </PrivateRoute>
+            },
+            {
+                path: '/dashboard/Pending-Loans',
+                element: <PrivateRoute>
+                    <PendingLoans />
                 </PrivateRoute>
             },
         ]
