@@ -17,7 +17,6 @@ const ManagerLoans = () => {
                 setLoading(false)
             })
     }, [user])
-    console.log(loans);
     if (loading) {
         return <LoaidngSpinenr />
     }
@@ -25,7 +24,6 @@ const ManagerLoans = () => {
     const handleSearch = (e) => {
         e.preventDefault()
         const searchtext = e.target.value
-        console.log(searchtext);
         fetch(`${import.meta.env.VITE_DOMAIN}/manager-data?search=${searchtext}`)
         .then(res => res.json())
             .then(data => {

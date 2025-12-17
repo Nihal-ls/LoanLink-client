@@ -30,7 +30,6 @@ const AdminUsers = () => {
 
     }
 
-    console.log(users);
     if (loading) return <LoaidngSpinenr />
     return (
         <div>

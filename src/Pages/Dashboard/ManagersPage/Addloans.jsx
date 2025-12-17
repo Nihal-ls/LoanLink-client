@@ -14,7 +14,6 @@ const Addloans = () => {
             ...data,
             created_by: user.email,
         };
-        console.log(payload);
         await axios.post(`${import.meta.env.VITE_DOMAIN}/add-loans`,
             payload
         )

@@ -20,12 +20,9 @@ const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm()
 
     const handleformSubmit = async (data) => {
-        console.log(data);
         const { name, email, photoURL, role } = data
         const savingEmail = email.toLowerCase(); 
-        console.log(savingEmail);
         const result = await createUser(email, data?.password)
-        console.log(result);
 
         await updateUserProfile(name, photoURL,)
         setUser(result.user);

@@ -17,7 +17,6 @@ const Approvedloan = () => {
             })
     }, [role])
     if (loading) return <LoaidngSpinenr />
-    console.log(loan);
 
 
     if (!role === "Manager") {

@@ -14,7 +14,6 @@ const LoansDetails = () => {
                 setLoading(false)
             })
     }, [id])
-    console.log(loan);
     if (loading) {
         return <LoaidngSpinenr/>
     }

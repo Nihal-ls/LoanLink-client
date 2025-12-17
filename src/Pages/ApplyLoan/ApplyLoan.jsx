@@ -29,7 +29,6 @@ const ApplyLoan = () => {
     }
     const { loanTitle, interestRate } = loan || []
     const handleformSubmit = async (data) => {
-        console.log(data);
         await axios.post(`${import.meta.env.VITE_DOMAIN}/loan-application`,data)
          navigate('/dashboard')
     }

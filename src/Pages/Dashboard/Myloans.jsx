@@ -19,7 +19,6 @@ const Myloans = () => {
             })
     }, [user])
     if (loading) return <LoaidngSpinenr/>
-    console.log(loan);
 
  
 

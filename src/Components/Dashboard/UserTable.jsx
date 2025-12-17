@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router';
 const UserTable = ({ user, index }) => {
     const handleRoleChange = async (e) => {
         const role = e.target.value
-        console.log(role);
          try{
             await axios.patch(`${import.meta.env.VITE_DOMAIN}/update-role`,{email: user?.email,role: role })
 

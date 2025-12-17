@@ -8,7 +8,6 @@ import { MdHomeRepairService } from 'react-icons/md';
 const Navbar = () => {
     const [theme, Settheme] = useState(localStorage.getItem("theme") || "light")
     const { user, logOut } = useAuth()
-    console.log(user);
 
     useEffect(() => {
         const html = document.querySelector('html')

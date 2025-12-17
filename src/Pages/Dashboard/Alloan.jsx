@@ -11,7 +11,6 @@ const Alloan = () => {
     if (!data) {
         return <LoaidngSpinenr/>
     }
-    console.log(data);
 
    
 
