@@ -22,7 +22,7 @@ const Navbar = () => {
     }
     const navLinks = <>
         <NavLink to='/' className="flex items-center gap-2"><IoHomeOutline />Home</NavLink>
-        <NavLink to='/AllLoans' className="flex items-center gap-2"><MdHomeRepairService />All Loans</NavLink>
+        <NavLink to='/AllLoans' className="flex my-3 items-center gap-2"><MdHomeRepairService />All Loans</NavLink>
     </>
     const handleSignOut = () => {
         logOut()
@@ -39,15 +39,7 @@ const Navbar = () => {
                         <ul
                             tabIndex="-1"
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <li><a>Item 1</a></li>
-                            <li>
-                                <a>Parent</a>
-                                <ul className="p-2">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </li>
-                            <li><a>Item 3</a></li>
+                            {navLinks}
                         </ul>
                     </div>
                     <a className="text-xl font-bold">Loan-Link</a>
@@ -61,7 +53,8 @@ const Navbar = () => {
                     {
                         user ?
                             <div className="dropdown dropdown-end">
-                                <div tabIndex={0} role=" button" className="m-1 flex items-center bg-gray-700 rounded-2xl px-2 p-1 gap-2">
+                                <div tabIndex={0} role=" button" className="m-1 flex items-center bg-orange-400 rounded-2xl px-2 p-1 gap-2">
+
                                     <AiOutlineMenu color='white' size={24} />
                                     <img
                                         className='rounded-full'

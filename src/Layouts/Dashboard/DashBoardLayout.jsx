@@ -6,6 +6,7 @@ import { AiFillShopping } from 'react-icons/ai';
 import { FaClock, FaRegClock, FaUserClock, FaUsers } from 'react-icons/fa6';
 import { FaMoneyCheckAlt, FaShoppingBag } from 'react-icons/fa';
 import useRole from '../../Hooks/useRole';
+import { MdVerified } from 'react-icons/md';
 
 const DashBoardLayout = () => {
     const [theme, Settheme] = useState(localStorage.getItem("theme") || "light")
@@ -71,15 +72,16 @@ const DashBoardLayout = () => {
                                     </NavLink>
                                 </button>
                             </li>
-                            <li>
-                                <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My loans">
-                                    {/* Home icon */}
-                                    <Link to='/dashboard' className='items-center flex gap-1' >
-                                        <AiFillShopping size={24} />
-                                        <span className="is-drawer-close:hidden">My Loans</span>
-                                    </Link>
-                                </button>
-                            </li>
+                            {
+                                role === 'borrower' && <li>
+                                    <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My loans">
+                                        <Link to='/dashboard' className='items-center flex gap-1' >
+                                            <AiFillShopping size={24} />
+                                            <span className="is-drawer-close:hidden">My Loans</span>
+                                        </Link>
+                                    </button>
+                                </li>
+                            }
 
 
                             {role === 'Admin' &&
@@ -124,7 +126,7 @@ const DashBoardLayout = () => {
                                         </NavLink>
                                     </button>
                                 </li>}
-                                {/* manage loans */}
+                            {/* manage loans */}
                             {role === 'Manager' &&
                                 < li >
                                     <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manager Loans">
@@ -135,7 +137,7 @@ const DashBoardLayout = () => {
                                         </NavLink>
                                     </button>
                                 </li>}
-                                {/* manager--- pending loansn */}
+                            {/* manager--- pending loansn */}
                             {role === 'Manager' &&
                                 < li >
                                     <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Pending Loans">
@@ -143,6 +145,17 @@ const DashBoardLayout = () => {
                                         <NavLink to='/dashboard/Pending-Loans' className='items-center flex gap-1' >
                                             <FaRegClock size={24} />
                                             <span className="is-drawer-close:hidden">Pending Loans</span>
+                                        </NavLink>
+                                    </button>
+                                </li>}
+                            {/* manager--- Approved loansn */}
+                            {role === 'Manager' &&
+                                < li >
+                                    <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Approved Loans">
+
+                                        <NavLink to='/dashboard/Approved-Loans' className='items-center flex gap-1' >
+                                            <MdVerified size={24} />
+                                            <span className="is-drawer-close:hidden">Approved Loans</span>
                                         </NavLink>
                                     </button>
                                 </li>}

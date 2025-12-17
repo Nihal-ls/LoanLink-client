@@ -17,29 +17,31 @@ const PendingLoans = () => {
                 setLoading(false)
             })
     }, [role])
-    if (loading) return <LoaidngSpinenr/>
+    if (loading) return <LoaidngSpinenr />
     console.log(loan);
 
 
     if (!role === "Manager") {
         return <h1>You are not allowed</h1>
     }
- 
- 
-  
+
+
+
 
     return (
 
         <div>
-             <div className="overflow-x-auto rounded-box border border-base-content/5 bg-transparent">
+            <div className="overflow-x-auto rounded-box border border-base-content/5 bg-transparent">
                 <table className="table">
                     {/* head */}
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Loan Name</th>
-                            <th>Loan ID </th>
+                            <th>Loan id</th>
+                            <th>Borrower Info</th>
                             <th>Status</th>
+                            <th>Amount</th>
+                            <th>Applied At</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -47,7 +49,7 @@ const PendingLoans = () => {
                         {/* row 1 */}
                         {
                             loan.map((l, index) =>
-                               <PendingLoanTable l={l} loans={loan} setLoan={setLoan} index={index}/>
+                                <PendingLoanTable l={l} loans={loan} setLoan={setLoan} index={index} />
                             )
                         }
                     </tbody>

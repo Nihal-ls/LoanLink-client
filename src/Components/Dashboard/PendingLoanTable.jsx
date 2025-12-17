@@ -3,7 +3,7 @@ import ApplicationTableModal from './Modals/ApplicationTableModal';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-const PendingLoanTable = ({ index, l,setLoan,loans }) => {
+const PendingLoanTable = ({ index, l, setLoan, loans }) => {
 
 
     const handleDelete = () => {
@@ -48,45 +48,53 @@ const PendingLoanTable = ({ index, l,setLoan,loans }) => {
             }
         });
     }
-const handleApprove = async () => {
-    try {
-        await axios.post(
-            `${import.meta.env.VITE_DOMAIN}/loan-application/approve/${l._id}`
-        );
+    const handleApprove = async () => {
+        try {
+            await axios.post(
+                `${import.meta.env.VITE_DOMAIN}/loan-application/approve/${l._id}`
+            );
 
-        const remaining = loans.filter(item => item._id !== l._id);
-        setLoan(remaining);
+            const remaining = loans.filter(item => item._id !== l._id);
+            setLoan(remaining);
 
-        Swal.fire({
-            icon: 'success',
-            title: 'Approved!',
-            text: 'Loan has been approved successfully'
-        });
+            Swal.fire({
+                icon: 'success',
+                title: 'Approved!',
+                text: 'Loan has been approved successfully'
+            });
 
-    } catch (error) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Failed to approve loan'
-        });
-    }
-};
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Failed to approve loan'
+            });
+        }
+    };
+    console.log(l);
 
     return (
         <tr>
 
             <th>{index + 1}</th>
-            <td>{l.loanTitle}</td>
             <td>{l._id}</td>
+            <td>
+                <h1>{l.firstName + " " + l.lastName}</h1>
+                <h1>{l.email}</h1>
+
+            </td>
+
             <td className=''>
                 <span className='bg-yellow-100/40 text-yellow-500 p-2 rounded-full'>{l?.status}</span>
             </td>
+            <td>{l.loanAmount}$</td>
+            <td>{l?.AppliedAt}</td>
             <td className='flex gap-2'>
                 <button onClick={() => document.getElementById(`my_modal_${l._id}`).showModal()} className='btn bg-orange-100 text-orange-500 hover:bg-orange-500 hover:text-white' >View</button>
 
                 <ApplicationTableModal loan={l} />
 
-                <button onClick={handleDelete} className='text-red-500 hover:text-white hover:bg-red-500 bg-red-100 btn'>Delete</button>
+                <button onClick={handleDelete} className='text-red-500 hover:text-white hover:bg-red-500 bg-red-100 btn'>Reject</button>
                 <button onClick={handleApprove} className='bg-green-100 text-green-500 hover:bg-green-500 hover:text-white btn'>Approve</button>
             </td>
         </tr>
