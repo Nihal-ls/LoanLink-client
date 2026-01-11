@@ -5,6 +5,9 @@ import avatar from '../../assets/placeholder.jpg'
 import { AiFillAppstore, AiOutlineMenu } from 'react-icons/ai';
 import { IoExitOutline, IoHomeOutline, IoMoon } from 'react-icons/io5';
 import { MdHomeRepairService } from 'react-icons/md';
+import { FaPhoneAlt } from "react-icons/fa";
+import { GoLaw } from 'react-icons/go';
+
 const Navbar = () => {
     const [theme, Settheme] = useState(localStorage.getItem("theme") || "light")
     const { user, logOut } = useAuth()
@@ -22,6 +25,8 @@ const Navbar = () => {
     const navLinks = <>
         <NavLink to='/' className="flex items-center gap-2"><IoHomeOutline />Home</NavLink>
         <NavLink to='/AllLoans' className="flex my-3 items-center gap-2"><MdHomeRepairService />All Loans</NavLink>
+        <NavLink to='/ContactUs' className="flex my-3 items-center gap-2"><FaPhoneAlt /> Contact Us</NavLink>
+        <NavLink to='/Terms' className="flex my-3 items-center gap-2"><GoLaw />Terms</NavLink>
     </>
     const handleSignOut = () => {
         logOut()
@@ -65,14 +70,14 @@ const Navbar = () => {
                                     />
                                 </div>
                                 <ul tabIndex="-1" className="dropdown-content space-y-2 menu bg-base-100 rounded-box z-1 w-70 text-xl p-2 shadow-sm">
-                                    <li><Link to='/dashboard' className='flex items-center gap-2'><AiFillAppstore size={20}/> Dashboard</Link></li>
-                                  
+                                    <li><Link to='/dashboard' className='flex items-center gap-2'><AiFillAppstore size={20} /> Dashboard</Link></li>
+
                                     <li className=''><div className="flex items-center gap-2">
                                         <input
                                             type="checkbox"
                                             onChange={(e) => handeltheme(e.target.checked)}
                                             defaultChecked={localStorage.getItem('theme') === "dark"}
-                                            className="toggle toggle-md" /><IoMoon size={20}/></div></li>
+                                            className="toggle toggle-md" /><IoMoon size={20} /></div></li>
                                     <li><button
                                         onClick={handleSignOut}
                                         className='btn rounded-md border-none bg-orange-400 text-white '><IoExitOutline size={20} />Sign Out</button></li>
@@ -89,7 +94,7 @@ const Navbar = () => {
                                 type="checkbox"
                                 onChange={(e) => handeltheme(e.target.checked)}
                                 defaultChecked={localStorage.getItem('theme') === "dark"}
-                                className="toggle toggle-md" /><IoMoon size={20}/>
+                                className="toggle toggle-md" /><IoMoon size={20} />
                         </div>
                     }
                 </div>

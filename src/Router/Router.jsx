@@ -18,12 +18,14 @@ import Addloans from "../Pages/Dashboard/ManagersPage/Addloans";
 import ManageLoans from "../Pages/Dashboard/ManagersPage/ManageLoans";
 import PendingLoans from "../Pages/Dashboard/ManagersPage/PendingLoans";
 import Approvedloan from "../Pages/Dashboard/ManagersPage/Approvedloan";
+import ContactUs from "../Pages/Contact Us/ContactUs";
+import TermsAndConditions from "../Pages/Terms/TermsAndConditions";
 
 const Router = createBrowserRouter([
     {
         path: "/",
         element: <HomeLayout />,
-        hydrateFallbackElement: <LoaidngSpinenr/>,
+        hydrateFallbackElement: <LoaidngSpinenr />,
         children: [
             {
                 index: true,
@@ -55,6 +57,15 @@ const Router = createBrowserRouter([
                 path: '/login',
                 element: <Login />
             },
+            {
+                path: '/terms',
+                element: < TermsAndConditions />
+            },
+
+            {
+                path: '/ContactUs',
+                element: <ContactUs />
+            },
 
         ],
 
@@ -64,7 +75,7 @@ const Router = createBrowserRouter([
         element: <PrivateRoute>
             <DashBoardLayout />
         </PrivateRoute>,
-        hydrateFallbackElement: <LoaidngSpinenr/>,
+        hydrateFallbackElement: <LoaidngSpinenr />,
         children: [
             {
 

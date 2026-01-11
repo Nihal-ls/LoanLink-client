@@ -71,7 +71,6 @@ const PendingLoanTable = ({ index, l, setLoan, loans }) => {
             });
         }
     };
-    console.log(l);
 
     return (
         <tr>

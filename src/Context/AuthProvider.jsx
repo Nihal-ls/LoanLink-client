@@ -39,12 +39,15 @@ const AuthProvider = ({ children }) => {
     return signOut(auth)
   }
 
-  const updateUserProfile = (name, photo) => {
-    return updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: photo,
-    })
-  }
+
+  const updateUserProfile = async (name, photoURL) => {
+    if (!auth.currentUser) return;
+    await updateProfile(auth.currentUser, {
+      displayName: name || auth.currentUser.displayName,
+      photoURL: photoURL || auth.currentUser.photoURL,
+    });
+    setUser({ ...auth.currentUser, displayName: name, photoURL });
+  };
 
   // onAuthStateChange
   useEffect(() => {

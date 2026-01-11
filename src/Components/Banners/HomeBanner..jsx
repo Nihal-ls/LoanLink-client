@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion"; // Import motion
 import bannerImg from '../../assets/bannerimg1.png'
+import { Link } from "react-router";
 
 const HomeBanner = () => {
     // 1. Define animation variants for the main container and children
@@ -73,9 +74,9 @@ const HomeBanner = () => {
                             variants={itemVariants}
                             className="flex justify-center"
                         >
-                            <button className="btn rounded-md border-none my-4 px-20 bg-orange-400 text-white hover:bg-orange-500 transition duration-300">
-                                Apply A Loan
-                            </button>
+                            <Link to="/loan" className="btn rounded-md border-none my-4 px-20 bg-orange-400 text-white hover:bg-orange-500 transition duration-300">
+                                Join Us
+                            </Link>
                         </motion.div>
                     </motion.div>
                     

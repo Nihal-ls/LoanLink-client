@@ -1,8 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router';
+import LoanCardSkeleton from './LoanCardSkeleton';
 
 const LoanCard = ({ loan }) => {
+  
+  if(!loan){
+    return <LoanCardSkeleton/>
+  }
+
+  
   const { loanTitle, loanImage, interestRate,description, maxLimit,_id } = loan;
 
   return (
