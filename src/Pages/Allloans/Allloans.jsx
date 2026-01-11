@@ -19,7 +19,7 @@ const Allloans = () => {
             try {
                 setLoading(true);
 
-                const res = await axios.get('http://localhost:5000/Allloans', {
+                const res = await axios.get(`${import.meta.env.VITE_DOMAIN}/Allloans`, {
                     params: {
                         search: searchTerm || undefined,
                         interest: interest || undefined,
